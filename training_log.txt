@@ -1,0 +1,58 @@
+device=cpu
+downloading Tiny Shakespeare ...
+corpus chars=1,115,394 vocab=65 train=1,003,854 val=111,540
+dense params: 0.82M
+[dense] step     0 | train 4.2281 | val 4.2283 | 2s
+[dense] step    50 | train 2.6327 | val 2.6188 | 18s
+[dense] step   100 | train 2.4862 | val 2.4900 | 35s
+[dense] step   150 | train 2.4195 | val 2.4229 | 52s
+[dense] step   200 | train 2.3357 | val 2.3512 | 70s
+[dense] step   250 | train 2.2271 | val 2.2564 | 87s
+[dense] step   300 | train 2.1318 | val 2.1702 | 103s
+[dense] step   350 | train 2.0280 | val 2.0846 | 120s
+[dense] step   400 | train 1.9627 | val 2.0360 | 137s
+[dense] step   450 | train 1.8840 | val 1.9815 | 154s
+[dense] step   500 | train 1.8313 | val 1.9411 | 171s
+[dense] step   550 | train 1.7973 | val 1.9121 | 188s
+[dense] step   600 | train 1.7700 | val 1.8907 | 205s
+
+function-preservation check (noise=0): dense=1.892581 moe=1.892581 diff=1.19e-07
+with noise_std=0.01: moe loss right after conversion = 1.892677
+MoE params: total 2.40M | active/token 1.35M
+
+[moe] step   600 | train 1.7701 | val 1.8908 | 3s
+[moe] step   650 | train 1.7616 | val 1.8900 | 29s
+[moe] step   700 | train 1.7744 | val 1.9078 | 55s
+[moe] step   750 | train 1.7423 | val 1.8762 | 81s
+[moe] step   800 | train 1.7027 | val 1.8406 | 106s
+[moe] step   850 | train 1.6745 | val 1.8107 | 132s
+[moe] step   900 | train 1.6290 | val 1.7693 | 159s
+[moe] step   950 | train 1.6051 | val 1.7574 | 184s
+[moe] step  1000 | train 1.5697 | val 1.7289 | 209s
+[moe] step  1050 | train 1.5481 | val 1.7066 | 234s
+[moe] step  1100 | train 1.5285 | val 1.6854 | 259s
+[moe] step  1150 | train 1.5143 | val 1.6724 | 284s
+[moe] step  1200 | train 1.5058 | val 1.6590 | 309s
+[dense_continued] step   600 | train 1.7700 | val 1.8907 | 2s
+[dense_continued] step   650 | train 1.7652 | val 1.8888 | 17s
+[dense_continued] step   700 | train 1.7845 | val 1.9017 | 32s
+[dense_continued] step   750 | train 1.7609 | val 1.9004 | 46s
+[dense_continued] step   800 | train 1.7194 | val 1.8660 | 61s
+[dense_continued] step   850 | train 1.6991 | val 1.8599 | 77s
+[dense_continued] step   900 | train 1.6738 | val 1.8416 | 92s
+[dense_continued] step   950 | train 1.6371 | val 1.7845 | 107s
+[dense_continued] step  1000 | train 1.6136 | val 1.7763 | 122s
+[dense_continued] step  1050 | train 1.5932 | val 1.7600 | 136s
+[dense_continued] step  1100 | train 1.5767 | val 1.7408 | 151s
+[dense_continued] step  1150 | train 1.5637 | val 1.7252 | 166s
+[dense_continued] step  1200 | train 1.5579 | val 1.7237 | 181s
+[check] PASS | dense (from scratch)             val 4.2283 -> 1.8907
+[check] PASS | MoE (after conversion)           val 1.8908 -> 1.6590
+[check] PASS | dense continued (control)        val 1.8907 -> 1.7237
+[check] PASS | MoE vs dense-at-conversion       val 1.8907 -> 1.6590
+
+=== SUMMARY (val loss) ===
+dense @ conversion       : 1.8907
+MoE after 600 steps       : 1.6590
+dense continued (control): 1.7237
+saved /mnt/user-data/outputs/results/loss_curves.png

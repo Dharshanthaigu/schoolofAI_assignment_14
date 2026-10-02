@@ -1,0 +1,143 @@
+{
+  "dense_at_conversion": {
+    "train": 1.7699998497962952,
+    "val": 1.890724790096283
+  },
+  "moe_final": {
+    "phase": "moe",
+    "step": 1200,
+    "train_loss": 1.505751097202301,
+    "val_loss": 1.6589918613433838,
+    "utilization": [
+      [
+        0.262451171875,
+        0.0960693359375,
+        0.4530029296875,
+        0.1884765625
+      ],
+      [
+        0.2626953125,
+        0.2686767578125,
+        0.25537109375,
+        0.2132568359375
+      ],
+      [
+        0.267333984375,
+        0.22314453125,
+        0.2611083984375,
+        0.2484130859375
+      ],
+      [
+        0.25927734375,
+        0.20068359375,
+        0.2401123046875,
+        0.2999267578125
+      ]
+    ]
+  },
+  "dense_continued_final": {
+    "phase": "dense_continued",
+    "step": 1200,
+    "train_loss": 1.5579175114631654,
+    "val_loss": 1.7236654043197632
+  },
+  "function_preservation": {
+    "dense": 1.8925814628601074,
+    "moe_exact": 1.8925813436508179,
+    "moe_with_noise": 1.8926773071289062
+  },
+  "params": {
+    "dense": 818048,
+    "moe_total": 2400640,
+    "moe_active": 1346944
+  },
+  "config": {
+    "quick": false,
+    "out_dir": "/mnt/user-data/outputs/results",
+    "seed": 1337,
+    "n_layer": 4,
+    "n_head": 4,
+    "d_model": 128,
+    "d_ff": 512,
+    "block_size": 128,
+    "dropout": 0.0,
+    "n_experts": 4,
+    "top_k": 2,
+    "noise_std": 0.01,
+    "aux_coef": 0.01,
+    "batch_size": 32,
+    "dense_steps": 600,
+    "moe_steps": 600,
+    "lr": 0.003,
+    "moe_lr": 0.001,
+    "warmup": 100,
+    "eval_every": 50,
+    "eval_iters": 10
+  },
+  "final_expert_utilization": [
+    [
+      0.3046875,
+      0.125,
+      0.45703125,
+      0.11328125
+    ],
+    [
+      0.359375,
+      0.14453125,
+      0.25,
+      0.24609375
+    ],
+    [
+      0.2265625,
+      0.14453125,
+      0.34765625,
+      0.28125
+    ],
+    [
+      0.21484375,
+      0.28125,
+      0.17578125,
+      0.328125
+    ]
+  ],
+  "loss_reduction_checks": [
+    {
+      "phase": "dense (from scratch)",
+      "start_val": 4.228276205062866,
+      "end_val": 1.890724790096283,
+      "start_train": 4.228080177307129,
+      "end_train": 1.7699998497962952,
+      "val_drop": 2.3375514149665833,
+      "train_drop": 2.4580803275108343,
+      "passed": true
+    },
+    {
+      "phase": "MoE (after conversion)",
+      "start_val": 1.8907700419425963,
+      "end_val": 1.6589918613433838,
+      "start_train": 1.7700598597526551,
+      "end_train": 1.505751097202301,
+      "val_drop": 0.2317781805992125,
+      "train_drop": 0.2643087625503542,
+      "passed": true
+    },
+    {
+      "phase": "dense continued (control)",
+      "start_val": 1.890724790096283,
+      "end_val": 1.7236654043197632,
+      "start_train": 1.7699998497962952,
+      "end_train": 1.5579175114631654,
+      "val_drop": 0.1670593857765197,
+      "train_drop": 0.21208233833312984,
+      "passed": true
+    },
+    {
+      "phase": "MoE vs dense-at-conversion",
+      "start_val": 1.890724790096283,
+      "end_val": 1.6589918613433838,
+      "val_drop": 0.23173292875289908,
+      "passed": true
+    }
+  ],
+  "all_checks_passed": true
+}
